@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "jdk",
+            "name": "Run Lab01",
+            "request": "launch",
+            "mainClass": "com.asap.lab01.Lab01",
+        }
+    ],
+    "compounds": []
+}
