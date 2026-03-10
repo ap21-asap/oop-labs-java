@@ -1,6 +1,8 @@
 package com.asap.utils;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 import java.util.stream.Collector;
 import java.util.stream.Stream;
 
@@ -18,5 +20,9 @@ public class Utils {
                             return sb1.append(sb2);
                         }
                 )).toString();
+    }
+
+    public static <T> T getRandomElement(List<T> arr) {
+        return arr.get(new Random().nextInt(0, arr.size()));
     }
 }

@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 import com.asap.lab01.task3.Task3;
+import com.asap.lab01.task4.Task4;
 
 public class Main {
 
@@ -55,6 +56,9 @@ public class Main {
         { // 3
             var task3 = new Task3();
             task3.run();
+        }
+        { // 4
+            new Task4().run();
         }
     }
 }
