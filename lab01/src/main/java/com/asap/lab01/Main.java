@@ -1,23 +1,39 @@
 package com.asap.lab01;
 
+import java.util.Arrays;
+import java.util.Random;
+import java.util.stream.IntStream;
+
+import com.asap.lab01.task3.Task3;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        System.out.println("\nHello world!\n");
 
         { // 1
-            int a1 = 1, a2 = 2, a3 = 3, a4 = 4, a5 = 5, a6 = 6, a7 = 7, a8 = 8, a9 = 9, a0 = 10;
-            int[] as = {a1, a2, a3, a4, a5, a6, a7, a8, a9, a0};
-            int sum = as[0], sub = as[0], prod = as[0];
-            double div = as[0];
-            for (int i = 1; i < as.length; i++) {
-                sum += as[i];
-                sub -= as[i];
-                prod *= as[i];
-                div /= (double) (as[i]);
+            var random = new Random();
+            var valArr = IntStream.generate(() -> random.nextInt(100)).limit(10).toArray();
+            System.out.println("1)\nValues: ");
+            var sb = new StringBuilder();
+            Arrays.stream(valArr).forEach(x -> {
+                sb.append(x);
+                sb.append(", ");
+            });
+
+            if (valArr.length > 0) {
+                sb.setLength(sb.length() - 2);
             }
-            System.out.printf("1) Sum: %d; Sub: %d; Mul: %d; Div: %e\n", sum, sub, prod, div);
+            System.out.printf("\t%s\n", sb);
+
+            int sum = Arrays.stream(valArr).reduce((acc, r) -> acc + r).getAsInt();
+            int sub = Arrays.stream(valArr).reduce((acc, r) -> acc - r).getAsInt();
+            int prod = Arrays.stream(valArr).reduce((acc, r) -> acc * r).getAsInt();
+            double div = Arrays.stream(valArr).mapToDouble(x -> x).reduce((acc, r) -> acc / r).getAsDouble();
+
+            System.out.printf("\tSum: %d; Sub: %d; Mul: %d; Div: %e\n", sum, sub, prod, div);
         }
+
         { // 2
             String s1 = "We", s2 = "study", s3 = "variables", s4 = "for", s5 = "the", s6 = "fourth", s7 = "time";
             String[] ss = {s1, s2, s3, s4, s5, s6, s7};
@@ -32,8 +48,13 @@ public class Main {
             for (String s : ss) {
                 sb.append(s).append(' ');
             }
-            sb.setLength(Math.max(sb.length(), 1) - 1);
-            System.out.printf("2) %s", sb.toString());
+            sb.setLength(Math.max(sb.length() - 1, 0));
+            System.out.printf("2) %s\n", sb.toString());
+        }
+
+        { // 3
+            var task3 = new Task3();
+            task3.run();
         }
     }
 }

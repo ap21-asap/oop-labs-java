@@ -5,7 +5,7 @@
             "type": "jdk",
             "name": "Run Lab01",
             "request": "launch",
-            "mainClass": "com.asap.lab01.Lab01",
+            "mainClass": "com.asap.lab01.Main",
         }
     ],
     "compounds": []
